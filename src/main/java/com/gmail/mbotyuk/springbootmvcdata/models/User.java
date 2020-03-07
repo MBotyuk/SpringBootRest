@@ -2,7 +2,6 @@ package com.gmail.mbotyuk.springbootmvcdata.models;
 
 
 import com.fasterxml.jackson.annotation.*;
-import com.sun.istack.internal.NotNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -22,7 +21,6 @@ import java.util.Set;
 public class User implements UserDetails, Serializable {
 
     @Id
-    @NotNull
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
