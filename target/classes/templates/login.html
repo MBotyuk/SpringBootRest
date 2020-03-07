@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+    <link rel="stylesheet" th:href="@{/css/signin.css}" href="/css/signin.css"/>
+    <title>Login page</title>
+</head>
+<body class="text-center">
+
+<form th:action="@{/login}" method="post" class="form-signin">
+        <h1 class="h3 mb-3 font-weight-normal">Please Sign in</h1>
+
+        <div th:if="${param.error}">
+            <div class="alert alert-danger">
+                Invalid username and password.
+            </div>
+        </div>
+
+        <input type="text" name="username" id="username" class="form-control"
+               placeholder="UserName" required autofocus/>
+
+        <input type="password" name="password" id="password" class="form-control"
+               placeholder="Password" required/>
+    <div class="gradient-buttons ">
+        <input type="submit" class="btn btn-lg btn-primary btn-block z-depth-1-half" value="Sign In"/>
+    </div>
+</form>
+
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>

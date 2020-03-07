@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+    <link rel="stylesheet" th:href="@{/css/menu.css}" href="/css/menu.css"/>
+    <title>User</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-2">
+                    <ul class="nav flex-column nav-pills">
+                        <li class="nav-item" id="if">
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/user" data-toggle="pill">User</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-10">
+                    <h3>
+                        User panel
+                    </h3>
+
+                    <div align="left">
+                        <br/><br/>
+                        <table border="1" cellpadding="10">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tdataUser">
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"/>
+
+<script src="js/user.js"></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+    <link rel="stylesheet" th:href="@{/css/menu.css}" href="/css/menu.css"/>
+    <title>Users</title>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-2">
+                    <ul class="nav flex-column nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/admin" data-toggle="pill">Admin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user">User</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-10">
+                    <h3>
+                        Admin panel
+                    </h3>
+
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                               aria-controls="home" aria-selected="true">Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="history-tab" data-toggle="tab" href="#history" role="tab"
+                               aria-controls="history" aria-selected="false">Add User</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="home" role="tabpanel">
+                            <nav class="navbar navbar-light bg-light" id="nav">
+                                <span class="navbar-brand mb-0 h1">All users</span>
+                            </nav>
+                            <table class="table table-bordered table-striped table-light">
+                                <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody id="tdata">
+
+                                </tbody>
+                            </table>
+
+                            <div class="modal" id="editUser">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <b text="Edit user"></b>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+
+
+                                            <div class="form-group">
+                                                <label><b>ID</b></label>
+                                                <input type="text" readonly="readonly" name="id"
+                                                       class="form-control" id="form-id"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label><b>Name</b></label>
+                                                <input type="text" name="name" class="form-control" id="form-name"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label><b>Email</b></label>
+                                                <input type="email" name="email"
+                                                       class="form-control" id="form-email"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label><b>Password</b></label>
+                                                <input type="password" name="password"
+                                                       class="form-control" id="form-password"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label><b>Role</b></label>
+                                                <select size="2" name="role"
+                                                        class="user-form-control"
+                                                        multiple="multiple" id="form-role">
+                                                    <option selected th:text="USER"> USER</option>
+                                                    <option th:text="ADMIN"> ADMIN</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close
+                                            </button>
+                                            <button type="submit" class="btn btn-primary" id="form-save">Save changes
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade bg-white" id="history">
+                            <nav class="navbar navbar-light bg-light" id="nav1">
+                                <span class="navbar-brand mb-0 h1">Add new user</span>
+                            </nav>
+
+                            <table border="0" cellpadding="10" align="center">
+                                <tr>
+                                    <td>Name:</td>
+                                    <td>
+                                        <input type="text" name="name" id="form-new-name" class="form-control"
+                                               placeholder="UserName" required autofocus/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Email:</td>
+                                    <td>
+                                        <input type="email" name="email" id="form-new-email" class="form-control"
+                                               placeholder="Email" required autofocus/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Password:</td>
+                                    <td>
+                                        <input type="password" name="password" id="form-new-password"
+                                               class="form-control"
+                                               placeholder="Password" required autofocus/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Role:</td>
+                                    <td>
+                                        <select id="role" name="form-new-role" class="form-control">
+                                            <option selected th:text="USER"> USER</option>
+                                            <option th:text="ADMIN"> ADMIN</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center">
+                                        <button type="submit" class="btn btn-success" id="btn_new">Add new user</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"/>
+
+<script src="js/admin.js"></script>
+</body>
+</html>

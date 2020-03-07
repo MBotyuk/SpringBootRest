@@ -1,0 +1,11 @@
+.col-md-2 {
+    background: #f7f7fa; /* Цвет фона */
+    height: 100vh;
+}
+.col-md-10 {
+    background: #eeeef1; /* Цвет фона */
+    height: 100vh;
+}
+table {
+    padding: unset;
+}
